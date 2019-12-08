@@ -106,13 +106,19 @@
                             <a href="#"><i class="fa fa-suitcase fa-fw"></i> Master<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?= base_url("kriteria"); ?>">Kriteria</a>
+                                    <a href="<?= base_url("kriteria"); ?>">
+                                        <i class="fa fa-circle-thin"></i> Kriteria
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url("range_nilai"); ?>">Range Nilai</a>
+                                    <a href="<?= base_url("range_nilai"); ?>">
+                                        <i class="fa fa-circle-thin"></i> Range Nilai
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url("siswa"); ?>">Siswa</a>
+                                    <a href="<?= base_url("siswa"); ?>">
+                                        <i class="fa fa-circle-thin"></i> Siswa
+                                    </a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -127,10 +133,10 @@
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Laporan<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?= base_url("laporan/hitung"); ?>">Hasil Perhitungan</a>
+                                    <a href="<?= base_url("laporan/hitung"); ?>"><i class="fa fa-circle-thin"></i> Hasil Perhitungan</a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url("laporan/rangking"); ?>">Rangking</a>
+                                    <a href="<?= base_url("laporan/rangking"); ?>"><i class="fa fa-circle-thin"></i> Rangking</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

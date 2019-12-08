@@ -34,6 +34,8 @@ class Hasil_model extends CI_Model {
 		$q = $this->db->get($this->table);
 		if($q->num_rows()==0){
 			return $this->db->insert($this->table, $da);
+		}else{
+			return $this->update($da, array("NIS" => $da['NIS']));
 		}
 	}
 

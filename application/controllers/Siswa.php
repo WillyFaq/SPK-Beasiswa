@@ -47,7 +47,7 @@ class Siswa extends CI_Controller {
 	{
 		$data = array(	'page' 		=> 'siswa_view', 
 				'link_add' 	=> anchor('siswa/tambah', 'Tambah Data', array('class' => 'btn btn-success',  )),
-				'judul' 	=> 'Siswa',
+				'judul' 	=> 'Data Siswa',
 				'table'		=> $this->gen_table()
 				);
 		$this->load->view('index', $data);

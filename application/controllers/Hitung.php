@@ -35,6 +35,7 @@ class Hitung extends CI_Controller {
 			$nres = $nq->result();
 			foreach ($nres as $nrow) {
 				array_push($ini, $nrow->NILAI);
+				//echo $nrow->NAMA_KRITERIA." = ".$nrow->NILAI." ";
 			}
 			array_push($dada, $ini);
 		}
@@ -70,7 +71,7 @@ class Hitung extends CI_Controller {
 		array_push($head, 'NIS'); 
 		array_push($head, 'NAMA SISWA'); 
 		foreach ($kres as $rop) {
-			array_push($head, str_replace(" ", "<br>", $rop->NAMA_KRITERIA).' <br>('.$rop->BOBOT.'%)'); 
+			array_push($head, str_replace(" ", "<br>", $rop->NAMA_KRITERIA).' <br>('.$rop->BOBOT.')'); 
 		}
 
 		$dada = [];
@@ -149,20 +150,23 @@ class Hitung extends CI_Controller {
 			$ini = array('NIS' => $row->NIS, 'NAMA' => $row->NAMA_SISWA);
 
 			$nq = $this->Nilai_model->get_kriteria($row->NIS);
+			//echo $this->db->last_query();
 			$nres = $nq->result();
 			$nil = [];
 			$hasil = 0;
 			foreach ($nres as $nrow) {
-				$a = $nrow->NORMALISASI*($nrow->BOBOT/100);
+				$a = $nrow->NORMALISASI*$nrow->BOBOT;
 				$hasil += $a;
 				/*$input = array('HASIL' => $a);
 				$where = array('ID_RANGE' => $nrow->ID_RANGE, 'NIS' => $row->NIS);
 				$this->Nilai_model->update($input, $where);*/
+				array_push($nil, "($nrow->NORMALISASI x $nrow->BOBOT)");
 			}
 			$ini['NILAI'] = $hasil;
 			$input = array('NIS' => $row->NIS, 'TOTAL_NILAI' => $hasil);
 			$this->Hasil_model->insert($input);
-			array_push($dada, $ini);
+			//array_push($dada, $ini);
+			$dada[$row->NIS] =  join(" + ", $nil)." = ".$hasil;
 		}
 
 		//manual sorting
@@ -187,7 +191,7 @@ class Hitung extends CI_Controller {
 			$rank++;
 			$j++;
 		}*/
-
+		//print_r($dada);
 		$query = $this->Hasil_model->get_all();
 		$res = $query->result();
 		$num_rows = $query->num_rows();

@@ -44,7 +44,7 @@ class Range_nilai extends CI_Controller {
 	{
 		$data = array(	'page' 		=> 'range_nilai_view', 
 				'link_add' 	=> anchor('range_nilai/tambah', 'Tambah Data', array('class' => 'btn btn-success',  )),
-				'judul' 	=> 'Range Nilai',
+				'judul' 	=> 'Data Range Nilai',
 				'table'		=> $this->gen_table()
 				);
 		$this->load->view('index', $data);

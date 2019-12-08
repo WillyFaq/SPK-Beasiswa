@@ -121,7 +121,7 @@
 			$('#myModal').modal('show');
 		});
 		$('#myModal').on('shown.bs.modal', function () {
-		  $('.import_view').load('<?= base_url("nilai/import_view"); ?>');
+		  $('.import_view').load('<?= base_url("siswa/import_view"); ?>');
 		});
 		$('#myModal').on('hidden.bs.modal', function () {
 			location.reload();

@@ -4,7 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 body {
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
+  background-color: #222d32;
+  font-family: 'Source Sans Pro',sans-serif;
 }
 #wrapper {
   width: 100%;
@@ -12,16 +14,38 @@ body {
 #page-wrapper {
   padding: 0 15px;
   min-height: 568px;
-  background-color: white;
+  /* background-color: white; */
+  background-color: #ecf0f5;
 }
 @media (min-width: 768px) {
   #page-wrapper {
-    position: inherit;
+    position: absolute;
     margin: 0 0 0 250px;
     padding: 0 30px;
     border-left: 1px solid #e7e7e7;
+    overflow-y: scroll; 
   }
 }
+
+#page-wrapper::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+  background-color: #F5F5F5;
+}
+
+#page-wrapper::-webkit-scrollbar
+{
+  width: 5px;
+  background-color: #222d32;
+}
+
+#page-wrapper::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #222d32;
+}
+
 .navbar-top-links {
   margin-right: 0;
 }
@@ -75,7 +99,7 @@ body {
   padding: 15px;
 }
 .sidebar ul li {
-  border-bottom: 1px solid #e7e7e7;
+  /* border-bottom: 1px solid #e7e7e7; */
 }
 .sidebar ul li a.active {
   background-color: #eeeeee;
@@ -439,4 +463,58 @@ table.dataTable thead .sorting:after {
   right: 10px;
   top:60px;
   width: 350px;
+}
+
+.navbar-static-top {
+  background-color: #3c8dbc;
+  border:none;
+}
+.navbar-default .navbar-brand, .navbar-top-links li a {
+  color: #FFF;
+}
+.nav>li>a:focus, .nav>li>a:hover, .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+  text-decoration: none;
+  background-color: #367fa9;
+}
+.navbar-top-links .dropdown-menu li a{
+  color: #000;
+}
+.sidebar{
+  background-color: #222d32;
+}
+.nav>li>a{
+  color: #FFF;
+}
+.sidebar ul li a.active, .sidebar ul li a:hover, .sidebar ul li a:focus{
+  background-color: #1a2226;
+}
+.sidebar ul li a.active{
+  border-left: 3px solid #3c8dbc; 
+}
+.sidebar .nav-second-level li a{
+  color: #8aa4af;
+}
+.sidebar .nav-second-level li a.active{
+  border:none;
+  color: #FFF;  
+  background: none;
+}
+
+.page-header{
+  font-size: 24px;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.panel-default{
+  border:none;
+  border-radius: 3px;
+  border-top: 3px solid #d2d6de;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.panel-default>.panel-heading{
+  background-color: #FFF;
+  border: none;
+  border-bottom: 1px solid #f4f4f4;
 }

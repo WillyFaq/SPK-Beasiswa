@@ -13,6 +13,7 @@ class Kriteria_model extends CI_Model {
 
 	public function get_all()
 	{
+		$this->db->order_by('ID_KRITERIA', 'asc');
 		return $this->db->get($this->table);
 	}
 

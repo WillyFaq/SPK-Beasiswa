@@ -64,7 +64,7 @@ class Nilai extends CI_Controller {
 		
 		$data = array(	'page' 		=> 'nilai_view', 
 				'link_add' 	=> anchor('nilai/tambah', 'Tambah Data', array('class' => 'btn btn-success',  )),
-				'judul' 	=> 'Nilai',
+				'judul' 	=> 'Data Penilaian',
 				'table'		=> $this->gen_table()
 				);
 		$this->load->view('index', $data);
@@ -295,9 +295,11 @@ class Nilai extends CI_Controller {
 			$inputan = array('ID_RANGE' => $value, 'NIS' => $this->input->post('NIS'));
 			$where = array('ID_RANGE' => $kri[$key], 'NIS' => $this->input->post('NIS'));
 			//echo $value.'<br>';
-			/*print_r($inputan);
-			print_r($where);
-			echo '<hr>';*/
+			print_r($inputan);
+			//print_r($where);
+			$nis = $this->input->post('NIS');
+			echo "UPDATE nilai SET ID_RANGE = $value, NIS = $nis WHERE ID_RANGE = $kri[$key] AND NIS = $nis";
+			echo '<hr>';
 			array_push($ins, $this->Nilai_model->update($inputan, $where));
 			//echo $this->db->last_query().'<br>';
 		}

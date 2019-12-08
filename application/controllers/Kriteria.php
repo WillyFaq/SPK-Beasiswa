@@ -47,7 +47,7 @@ class Kriteria extends CI_Controller {
 	{
 		$data = array(	'page' 		=> 'kriteria_view', 
 				'link_add' 	=> anchor('kriteria/tambah', 'Tambah Data', array('class' => 'btn btn-success',  )),
-				'judul' 	=> 'Kriteria',
+				'judul' 	=> 'Data Kriteria',
 				'table'		=> $this->gen_table()
 				);
 		$this->load->view('index', $data);

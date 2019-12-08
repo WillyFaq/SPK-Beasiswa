@@ -49,6 +49,7 @@ class Nilai_model extends CI_Model {
 		$this->db->from('nilai a');
 		$this->db->join('range_nilai b', 'a.ID_RANGE = b.ID_RANGE');
 		$this->db->join('kriteria c', 'b.ID_KRITERIA = c.ID_KRITERIA');
+		$this->db->order_by('c.ID_KRITERIA', 'asc');
 		$this->db->where('a.NIS', $nis);
 		return $this->db->get();
 	}
