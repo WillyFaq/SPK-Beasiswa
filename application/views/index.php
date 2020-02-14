@@ -102,6 +102,7 @@
                         <li>
                             <a href="<?= base_url(""); ?>"><i class="fa fa-home fa-fw"></i> Home</a>
                         </li>
+                        <?php if($_SESSION[md5("jabatan")]=='0'): ?>
                         <li>
                             <a href="#"><i class="fa fa-suitcase fa-fw"></i> Master<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -123,6 +124,8 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <?php endif; ?>
+                        <?php if($_SESSION[md5("jabatan")]=='1'): ?>
                         <li>
                             <a href="<?= base_url("nilai"); ?>"><i class="fa fa-table fa-fw"></i> Penilaian</a>
                         </li>
@@ -141,6 +144,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

@@ -34,6 +34,7 @@
 								<input type="text" class="form-control" id="nama_admin" name="nama_admin" value="<?= isset($nama_admin)?$nama_admin:"";?>" placeholder="NAMA ADMIN" required>
 							</div>
 						</div>
+						<?= isset($cbjabatan)?$cbjabatan:''; ?>
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<button type="submit" class="btn btn-success">Simpan</button>

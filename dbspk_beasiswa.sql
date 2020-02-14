@@ -21,13 +21,16 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) DEFAULT NULL,
   `nama_admin` varchar(200) DEFAULT NULL,
+  `jabatan` char(1) DEFAULT NULL,
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table dbspk_beasiswa.admin: ~2 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` (`username`, `password`, `nama_admin`) VALUES
-	('admin', 'admin', 'Jamari Abidin');
+INSERT INTO `admin` (`username`, `password`, `nama_admin`, `jabatan`) VALUES
+	('admin', 'admin', 'Jamari Abidin', '0'),
+	('bubu', 'bubu', 'Budi Budarmasih', '1'),
+	('joko', 'joko', 'Joko Samsuri', '1');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
 -- Dumping structure for table dbspk_beasiswa.hasil

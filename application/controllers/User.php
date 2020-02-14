@@ -24,7 +24,7 @@ class User extends CI_Controller {
 
 		$this->table->set_empty("&nbsp;");
 
-		$this->table->set_heading('No', 'Password', 'Nama admin', 'Aksi');
+		$this->table->set_heading('No', 'username', 'Nama User', 'Jabatan', 'Aksi');
 
 		if ($num_rows > 0)
 		{
@@ -32,8 +32,9 @@ class User extends CI_Controller {
 
 			foreach ($res as $row){
 				$this->table->add_row(	++$i,
-							$row->password,
+							$row->username,
 							$row->nama_admin,
+							$row->jabatan==0?'admin':'panitia',
 							anchor('user/ubah/'.$row->username,'<span class="fa fa-pencil"></span>',array( 'title' => 'Ubah', 'class' => 'btn btn-primary btn-xs', 'data-toggle' => 'tooltip')).'&nbsp;'.
 							anchor('user/hapus/'.$row->username,'<span class="fa fa-trash"></span>',array( 'title' => 'Hapus', 'class' => 'btn btn-danger btn-xs', 'data-toggle' => 'tooltip'))
 						);
@@ -48,6 +49,18 @@ class User extends CI_Controller {
 				'form' 	=> 'user/login',
 				);
 		$this->load->view('login_view', $data);
+	}
+
+	public function combo_jabatan($sel)
+	{
+		$ret = '<div class="form-group"><label for="jabatan" class="col-sm-2 control-label">JABATAN</label><div class="col-sm-10">';
+    	
+    	$opt = array("0" => "Admin", "1" => "Panitia");
+		
+		$js = 'class="form-control"';
+		$ret= $ret.''.form_dropdown('jabatan',$opt,$sel,$js);
+		$ret= $ret.'</div></div>';
+		return $ret;
 	}
 
 	public function setting()
@@ -82,7 +95,11 @@ class User extends CI_Controller {
 	public function logout()
 	{
 		$_SESSION[md5("User")] = '';
+		$_SESSION[md5("nama")] = "";
+		$_SESSION[md5("jabatan")] = "";
 		unset($_SESSION[md5("User")]);
+		unset($_SESSION[md5("nama")]);
+		unset($_SESSION[md5("jabatan")]);
 		redirect('user');
 	}
 
@@ -92,6 +109,7 @@ class User extends CI_Controller {
 		$data = array(	'page' 		=> 'user_view', 
 				'judul' 	=> 'Tambah User',
 				'form'		=> 'user/add',
+				'cbjabatan'	=> $this->combo_jabatan("")
 				);
 		$this->load->view('index', $data);
 	}
@@ -102,6 +120,7 @@ class User extends CI_Controller {
 				'username' 	=> $this->input->post('username'),
 				'password' 	=> $this->input->post('password'),
 				'nama_admin' 	=> $this->input->post('nama_admin'),
+				'jabatan' 	=> $this->input->post('jabatan'),
 				);
 
 		if($this->User_model->add($inputan)){
@@ -130,6 +149,7 @@ class User extends CI_Controller {
 			$data['username'] 	= $row->username;
 			$data['password'] 	= $row->password;
 			$data['nama_admin'] 	= $row->nama_admin;
+			$data['cbjabatan'] 	= $this->combo_jabatan($row->jabatan);
 		}
 
 		$this->load->view('index', $data);
@@ -140,6 +160,7 @@ class User extends CI_Controller {
 		$inputan = array(
 				'password' 	=> $this->input->post('password'),
 				'nama_admin' 	=> $this->input->post('nama_admin'),
+				'jabatan' 	=> $this->input->post('jabatan'),
 				);
 
 		if($this->User_model->update($inputan, $this->input->post('username'))){

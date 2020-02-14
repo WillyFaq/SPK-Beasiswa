@@ -28,6 +28,16 @@ class Hasil_model extends CI_Model {
 		return $this->db->get($this->table);
 	}
 
+	public function get_kesimpulan()
+	{
+		$this->db->select('*');
+		$this->db->from($this->table);
+		$this->db->join($this->join, $this->table.'.'.$this->fk.' = '.$this->join.'.'.$this->fk);
+		$this->db->order_by($this->table.'.TOTAL_NILAI', 'desc');
+		$this->db->limit("1");
+		return $this->db->get();
+	}
+
 	public function insert($da)
 	{
 		$this->db->where('NIS', $da['NIS']);

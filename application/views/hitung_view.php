@@ -25,7 +25,10 @@
             	<hr>
             	<h3>Hasil</h3>
             	<hr>
-				<?= isset($table_hasil)?$table_hasil:'';?>
+                <?= isset($table_hasil)?$table_hasil:'';?>
+				
+                <?= isset($kesimpulan)?$kesimpulan:'';?>
+
             </div>
             <!-- /.panel-body -->
         </div>

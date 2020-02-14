@@ -54,6 +54,7 @@ class User_model extends CI_Model {
 			foreach ($res as $row) {
 				$_SESSION[md5("User")] = $row->username;
 				$_SESSION[md5("nama")] = $row->nama_admin;
+				$_SESSION[md5("jabatan")] = $row->jabatan;
 			}
 			return true;
 		}else{;

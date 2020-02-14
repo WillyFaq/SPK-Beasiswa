@@ -227,8 +227,40 @@ class Hitung extends CI_Controller {
 				'table'		=> $this->gen_table(),
 				'table_normal'		=> $this->gen_table_normal(),
 				'table_hasil'		=> $this->gen_table_hasil(),
+				'kesimpulan'	=> $this->gen_kesimpulan()
 				);
 		$this->load->view('index', $data);
+	}
+
+	public function gen_kesimpulan()
+	{
+		$ret = ' <div class="well">';
+		$ret .= ' <p class="text-success"><strong>Kesimpulan : </strong><br> Berdasarkan proses perhitungan menggunakan metode SAW dengan kriteria :</p>';
+
+		$qk = $this->Kriteria_model->get_all();
+		$resk = $qk->result();
+		$ret .= ' <ul class="text-success">';
+		foreach ($resk as $row) {
+			$attr = $row->ATRIBUT==1?'Benefit':'Cost';
+			$ret .= "<li><strong>$row->NAMA_KRITERIA</strong> dengan bobot <strong>$row->BOBOT</strong> ($attr) </li>";
+		}
+		$ret .= ' </ul>';
+
+		$qh = $this->Hasil_model->get_kesimpulan();
+		$resh = $qh->result();
+		
+		$row = $resh[0];
+
+		$ret .= '<p class="text-success">Maka, yang berhak memeproleh beasiswa adalah siswa bernama ';
+		$ret .= "<strong>$row->NAMA_SISWA</strong> ";
+		$ret .= ' dengan perolehan skor sebesar ';
+		$ret .= " <strong>".number_format($row->TOTAL_NILAI, 2)."</strong> ";
+        $ret .= '</p>';
+
+		//print_r($resh);
+
+		$ret .= ' </div>';
+		return $ret;
 	}
 
 }
